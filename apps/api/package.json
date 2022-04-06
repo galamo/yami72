@@ -7,7 +7,8 @@
     "build-watch": "tsc --watch",
     "start-dev": "nodemon ./dist/index.js",
     "all": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api,Client\" -c \"blue,red,yellow\"  \"npm run build-watch\" \"npm run start-dev\" \"cd .. ;cd yami-client; npm start\"",
-    "all-slim": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api\" -c \"blue,red\"  \"npm run build-watch\" \"npm run start-dev\""
+    "all-slim": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api\" -c \"blue,red\"  \"npm run build-watch\" \"npm run start-dev\"",
+    "install-globals":"npm install nodemon -g tsc -g"
   },
   "keywords": [],
   "author": "",
