@@ -4,25 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install-globals": "npm install nodemon -g tsc -g",
     "build-watch": "tsc --watch",
     "start-dev": "nodemon ./dist/index.js",
     "all": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api,Client\" -c \"blue,red,yellow\"  \"npm run build-watch\" \"npm run start-dev\" \"cd .. ;cd yami-client; npm start\"",
-    "all-slim": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api\" -c \"blue,red\"  \"npm run build-watch\" \"npm run start-dev\"",
-    "install-globals":"npm install nodemon -g tsc -g"
+    "all-slim": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api\" -c \"blue,red\"  \"npm run build-watch\" \"npm run start-dev\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^7.1.0",
     "body-parser": "^1.19.2",
+    "concurrently": "^7.1.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "joi": "^17.6.0"
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^17.0.23"
   }
 }
