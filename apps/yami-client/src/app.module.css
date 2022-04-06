@@ -1,0 +1,9 @@
+.route {
+    padding: 10px;
+}
+
+.route>a {
+    color: white !important;
+    font-weight: bold;
+
+}

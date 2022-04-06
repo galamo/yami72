@@ -4,10 +4,11 @@ dotenv.config()
 import authRouter from "./auth"
 import bodyParser from "body-parser"
 import verifyToken from "./middleware/auth"
+import cors from "cors"
 
 const app = express()
+app.use(cors())
 app.use(bodyParser.json())
-
 app.use("/auth", authRouter)
 app.use(verifyToken)
 app.get("/orders", (req, res, next) => {

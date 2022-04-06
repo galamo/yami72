@@ -20,13 +20,15 @@ function logoutHandler(req, res) {
 }
 
 function loginHandler(req, res, next) {
-    const { userName, password } = req.body
-    const currentUser = isUserExist(users, userName)
-    if (!currentUser) return res.status(404).send("User not found")
-    if (!isPasswordMatch(currentUser, password)) return res.status(401).send("User not Authorized - Go to Hell!")
-    const token = jwt.sign({ data: { ...currentUser, password: null, role: "viewer" } }, process.env.SECRET,
-        { expiresIn: "1h" })
-    res.json({ userName, password, message: `Success`, token })
+    setTimeout(() => {
+        const { userName, password } = req.body
+        const currentUser = isUserExist(users, userName)
+        if (!currentUser) return res.status(404).send("User not found")
+        if (!isPasswordMatch(currentUser, password)) return res.status(401).send("User not Authorized - Go to Hell!")
+        const token = jwt.sign({ data: { ...currentUser, password: null, role: "viewer" } }, process.env.SECRET,
+            { expiresIn: "1h" })
+        return res.json({ userName, password, message: `Success`, token })
+    }, 2000);
 }
 
 
