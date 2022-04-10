@@ -17,6 +17,7 @@ import { Provider, useSelector } from "react-redux"
 import { store } from './store';
 import { ACTIONS } from './store/actions';
 import AppModal from './components/pages/appModal';
+import { OrdersPage } from './components/pages/orders';
 
 
 interface IRoute {
@@ -35,6 +36,7 @@ const routes: Array<IRoute> = [
   { path: "/problem", element: <ParentProblem />, linkText: "problem", invisible: false },
   { path: "/solution", element: <ParentSolution />, linkText: "solution", invisible: false },
   { path: "/settings", element: <SettingsPage />, linkText: "Settings", invisible: false },
+  { path: "/orders", element: <OrdersPage />, linkText: "Orders", invisible: false },
   { path: "*", element: <NotFound />, linkText: "", invisible: true }
 ]
 
@@ -52,7 +54,6 @@ export const GlobalState = createContext<IGlobalState>(initialState)
 
 
 const reducer = (state: IGlobalState, action: { type: string, payload?: any }) => {
-  console.log(state)
   switch (action.type) {
     case ACTIONS.USER_PROFILE.UPDATE_USER: {
       return { ...state, userProfile: { userName: action.payload } }

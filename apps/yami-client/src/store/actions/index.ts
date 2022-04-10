@@ -14,6 +14,7 @@ export const ACTIONS = {
         CLOSE_MODAL: "CLOSE_MODAL"
     },
     LOGIN: {
-        SET_LOADER: "SET_LOADER"
+        SET_LOADER: "SET_LOADER",
+        SUCCESS: "SUCCESS"
     }
 }

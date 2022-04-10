@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { Navigate } from "react-router-dom"
 import { loginAction } from "../../../store/asyncFunctions/auth"
 import { WithLoading } from "../../ui-components/with-loading"
 
@@ -11,11 +12,12 @@ export function LoginPage() {
     const [password, setPassword] = useState("")
 
     const isLoading = useSelector((state: any) => state.authReducer.isLoading)
+    const token = useSelector((state: any) => state.authReducer.token)
 
     async function login() {
         loginAction({ userName, password })
     }
-
+    if (typeof token === "string") return <Navigate to="/" />
     return (
         <div className="login-form">
             <div className="form-body">

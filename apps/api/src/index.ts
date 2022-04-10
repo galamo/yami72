@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 dotenv.config()
 import authRouter from "./auth"
+import ordersRouter from "./orders"
 import bodyParser from "body-parser"
 import verifyToken from "./middleware/auth"
 import cors from "cors"
@@ -11,9 +12,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use("/auth", authRouter)
 app.use(verifyToken)
-app.get("/orders", (req, res, next) => {
-    return res.send("YES !!!!")
-})
+app.use("/orders", ordersRouter)
 
 app.use((error, req, res, next) => {
     console.log(error)

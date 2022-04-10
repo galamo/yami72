@@ -1,17 +1,19 @@
 
 import { ACTIONS } from "../actions"
 import { store } from "../index"
-import { ILoginPayload, login } from "../services/authService"
+import { getOrders } from "../services/ordersService"
 function getDispatchStore() {
     return store.dispatch
 }
 
-export async function loginAction(payload: ILoginPayload) {
+export async function getOrdersAction() {
+    // 2 console.log(store.getState())
     const dispatch = getDispatchStore()
     dispatch(setLoginloader(true))
     try {
-        const loginResponse = await login(payload)
-        dispatch(loginSuccess(loginResponse))
+        const orders = await getOrders()
+        console.log(orders)
+        // dispatch(loginSuccess(loginResponse))
     } catch (ex: any) {
         // dispatch(getCountryError({ message: ex.message }))
     } finally {

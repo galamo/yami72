@@ -10,6 +10,6 @@ export interface ILoginResponse {
 }
 export async function login(payload: ILoginPayload): Promise<ILoginResponse> {
     const { data } = await axios.post(url, payload)
-    return data[0]
+    return data
 }
 
