@@ -1,7 +1,7 @@
 
 import { ACTIONS } from "../actions"
 import { store } from "../index"
-import { getOrders } from "../services/ordersService"
+import { createOrder, getOrders } from "../services/ordersService"
 function getDispatchStore() {
     return store.dispatch
 }
@@ -16,6 +16,22 @@ export async function getOrdersAction() {
         // dispatch(loginSuccess(loginResponse))
     } catch (ex: any) {
         // dispatch(getCountryError({ message: ex.message }))
+    } finally {
+        dispatch(setLoginloader(false))
+    }
+}
+export interface IOrder {
+    reservationDate: Date,
+    numberOfSeats: number,
+    owner: string,
+    insideOrOutside: string
+}
+export async function orderAction(order: IOrder) {
+    const dispatch = getDispatchStore()
+    try {
+        const orders = await createOrder(order)
+        
+    } catch (ex: any) {
     } finally {
         dispatch(setLoginloader(false))
     }

@@ -15,10 +15,17 @@
 4. inside/outside 
 
 ## Design
-- [] POST /order - 6m
-- [] schema validations - 5m
-- [] save order - 6m
-- [] Order component - form - 10m 
-- [] order Action ( Success / Error / Loader) - 6m
-- [] order service + async function - 4m
+- [x] POST /order - 6m
+- [x] schema validations - 5m
+- [x] save order - 6m
+- [x] Order component - form - 10m 
+- [x] order Action ( Success / Error / Loader) - 6m
+- [x] order service + async function - 4m
 - [x] order reducer - 3m
+
+
+
+# Homework
+1. Add a Custom modal to present Error/Success messages 
+2. Create new Route - Cancel Order
+3. install docker https://docs.docker.com/get-docker/

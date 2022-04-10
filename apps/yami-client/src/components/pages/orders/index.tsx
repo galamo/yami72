@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { getOrdersAction } from "../../../store/asyncFunctions/orders"
+import { CreateOrder } from "./create-order"
 
 
 // const ?q=ukraine&apiKey=
@@ -16,6 +17,7 @@ export function OrdersPage() {
     return <div className="container">
         <div className="row">
             <h1> Orders page </h1>
+            <CreateOrder />
             {Array.isArray(orders) && orders.map((o: string) => <h1>{o}</h1>)}
         </div>
     </div>
