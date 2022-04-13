@@ -36,3 +36,13 @@
 1. Centerlised openModal functionality 
 2. On creating order / deleting order execute getOrders again.
 3. fetch only my orders 
+
+
+# Homework
+1.  Create new Route for meals list
+2.  Create a meal
+3.  delete a meal
+4. add to users array - role key 
+`{ "date": "2022-04-20T17:30:00.000Z", "orderOwner": "galamo@a.com", "numberOfSeats": 2, "insideOrOutside": "inside", role:"admin" },`
+5. create registration page 
+
