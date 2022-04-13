@@ -26,7 +26,7 @@ function loginHandler(req, res, next) {
         if (!currentUser) return res.status(404).send("User not found")
         if (!isPasswordMatch(currentUser, password)) return res.status(401).send("User not Authorized - Go to Hell!")
         const token = jwt.sign({ data: { ...currentUser, password: null, role: "viewer" } }, process.env.SECRET,
-            { expiresIn: "1h" })
+            { expiresIn: "10h" })
         return res.json({ userName, message: `Success`, token })
     }, 2000);
 }
