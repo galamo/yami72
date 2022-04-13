@@ -2,6 +2,7 @@ import { IOrder } from "../asyncFunctions/orders"
 import axiosInstance from "./index.axios"
 const url = `http://localhost:3500/orders/`
 
+
 interface IOrders {
     order: string
 }
@@ -25,4 +26,14 @@ export async function createOrder(payload: IOrder): Promise<any> {
     })
     return data
 }
+
+export async function deleteOrder(payload: string): Promise<any> {
+    // 3. console.log(store.getState())
+    // @ts-ignore
+    const { data } = await axiosInstance.delete(`/orders?id=${payload}`)
+    return data
+}
+
+
+
 

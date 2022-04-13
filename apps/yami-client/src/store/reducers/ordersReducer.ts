@@ -5,9 +5,13 @@ const initialState = {
     orders: []
 }
 
-export const settingsReducers = (state: any = initialState, action: { type: string, payload?: any }) => {
+export const ordersReducer = (state: any = initialState, action: { type: string, payload?: any }) => {
     switch (action.type) {
-        // success
+        case ACTIONS.ORDERS.GET_ORDERS_SUCCESS: {
+            console.log("Inside orders reducer action")
+            return { ...state, orders: [...action.payload] }
+        }
+
         default:
             return state
     }

@@ -1,7 +1,7 @@
 
 import { ACTIONS } from "../actions"
 import { store } from "../index"
-import { createOrder, getOrders } from "../services/ordersService"
+import { createOrder, deleteOrder, getOrders } from "../services/ordersService"
 function getDispatchStore() {
     return store.dispatch
 }
@@ -11,9 +11,8 @@ export async function getOrdersAction() {
     const dispatch = getDispatchStore()
     dispatch(setLoginloader(true))
     try {
-        const orders = await getOrders()
-        console.log(orders)
-        // dispatch(loginSuccess(loginResponse))
+        const orders: any = await getOrders()
+        dispatch(ordersSuccess(orders))
     } catch (ex: any) {
         // dispatch(getCountryError({ message: ex.message }))
     } finally {
@@ -30,17 +29,40 @@ export async function orderAction(order: IOrder) {
     const dispatch = getDispatchStore()
     try {
         const orders = await createOrder(order)
-        
+        ordersSuccess(orders)
     } catch (ex: any) {
     } finally {
         dispatch(setLoginloader(false))
     }
 }
 
+export async function deleteOrderAction(id: string) {
+    const dispatch = getDispatchStore()
+    try {
+        const result: any = await deleteOrder(id)
+        _openSuccessModal(result)
+    } catch (ex: any) {
+    } finally {
+        dispatch(setLoginloader(false))
+    }
+    function _openSuccessModal(result: { message: string }) {
+        dispatch({
+            type: ACTIONS.MODAL.TOGGLE_MODAL,
+            payload: {
+                isOpen: true,
+                header: "Success", message: result.message
+            }
+        })
+    }
+
+}
+
+
+
 function setLoginloader(payload: boolean) {
     return { type: ACTIONS.LOGIN.SET_LOADER, payload }
 }
 
-function loginSuccess(payload: { token: string, message: string }) {
-    return { type: ACTIONS.LOGIN.SUCCESS, payload }
+function ordersSuccess(payload: Array<any>) {
+    return { type: ACTIONS.ORDERS.GET_ORDERS_SUCCESS, payload }
 }

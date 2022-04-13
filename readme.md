@@ -26,6 +26,13 @@
 
 
 # Homework
-1. Add a Custom modal to present Error/Success messages 
+1. Add a modal to present Error/Success messages 
 2. Create new Route - Cancel Order
 3. install docker https://docs.docker.com/get-docker/
+
+
+
+# Ex Delete order 
+1. Centerlised openModal functionality 
+2. On creating order / deleting order execute getOrders again.
+3. fetch only my orders 

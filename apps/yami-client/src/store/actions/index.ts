@@ -16,5 +16,11 @@ export const ACTIONS = {
     LOGIN: {
         SET_LOADER: "SET_LOADER",
         SUCCESS: "SUCCESS"
+    },
+    MODAL: {
+        TOGGLE_MODAL: "TOGGLE_MODAL"
+    },
+    ORDERS: {
+        GET_ORDERS_SUCCESS: "GET_ORDERS_SUCCESS"
     }
 }

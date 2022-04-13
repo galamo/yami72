@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express"
 import { orders } from "../data"
+import { deleteOrder } from "./controller"
 import { validateOrderPayload } from "./validations"
 
 const router = express.Router()
@@ -7,6 +8,7 @@ const router = express.Router()
 router.get("/", getOrdersHandler)
 
 router.post("/", validateOrderPayload, createOrderHandler)
+router.delete("/", deleteOrderHandler)
 
 function getOrdersHandler(req: Request, res: Response, next: NextFunction) {
     res.json(orders)
@@ -14,6 +16,13 @@ function getOrdersHandler(req: Request, res: Response, next: NextFunction) {
 function createOrderHandler(req: Request, res: Response, next: NextFunction) {
     orders.push(req.body)
     res.json({ message: "order created" })
+}
+
+function deleteOrderHandler(req: Request, res: Response, next: NextFunction) {
+    const id = req?.query?.id
+    const result = deleteOrder(id as string)
+    if (result) return res.json({ message: `Order ${id} Removed` })
+    else return res.status(403).json({ message: `Order ${id} was not Removed` })
 }
 
 export default router;

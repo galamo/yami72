@@ -6,14 +6,15 @@ import { ACTIONS } from '../../../store/actions';
 
 export default function AppModal() {
 
-    const appModalErrorState = useSelector((state: any) => state?.settingsReducers?.appModalError)
+    const appModalState = useSelector((state: any) => state?.modalReducer)
     const dispatch = useDispatch();
-    const closeFn = () => { dispatch({ type: ACTIONS.MODAL_ERROR.CLOSE_MODAL }) }
-    return (<Modal show={appModalErrorState.isOpen} onHide={closeFn}>
+    const closeFn = () => { dispatch({ type: ACTIONS.MODAL.TOGGLE_MODAL, payload: { isOpen: false } }) }
+    const { isOpen, header, message } = appModalState
+    return (<Modal show={isOpen} onHide={closeFn}>
         <Modal.Header closeButton>
-            <Modal.Title>{appModalErrorState.header}</Modal.Title>
+            <Modal.Title>{header}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{appModalErrorState.message}</Modal.Body>
+        <Modal.Body>{message}</Modal.Body>
         <Modal.Footer>
             <Button variant="secondary" onClick={closeFn}>
                 Close
