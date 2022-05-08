@@ -22,7 +22,6 @@ async function initDB() {
       password,
       database,
     });
-    // Bring some data from a chosen table!!!!!!!!!!!!!!!!
   } catch (error) {
     console.log(error);
     console.log("Application shut down due to MySQL connection error");

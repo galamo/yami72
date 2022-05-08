@@ -47,3 +47,7 @@
 5. create registration page 
 6. OPTIONAL: connect your applicaiton to mysql database 
 
+
+# Homework 08-05
+1. implement changePassword functionality with the mysql db
+

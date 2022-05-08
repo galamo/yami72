@@ -6,15 +6,15 @@ import ordersRouter from "./orders";
 import bodyParser from "body-parser";
 import verifyToken from "./middleware/auth";
 import cors from "cors";
-import { initDB } from "./db";
+import { initDB, getConnection } from "./db";
 
 initDB();
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.get("/healthcheck", (req, res) => {
-  res.json({ message: "app is working" });
+app.get("/healthcheck", async (req, res) => {
+  return res.send("Api is working!");
 });
 app.use("/auth", authRouter);
 app.use(verifyToken);
