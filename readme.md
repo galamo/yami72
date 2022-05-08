@@ -45,4 +45,5 @@
 4. add to users array - role key 
 `{ "date": "2022-04-20T17:30:00.000Z", "orderOwner": "galamo@a.com", "numberOfSeats": 2, "insideOrOutside": "inside", role:"admin" },`
 5. create registration page 
+6. OPTIONAL: connect your applicaiton to mysql database 
 
