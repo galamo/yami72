@@ -14,6 +14,7 @@ const {
 let connection = null;
 
 async function initDB() {
+  console.log("Database initilization Start");
   try {
     connection = await mysql2.createConnection({
       host,
