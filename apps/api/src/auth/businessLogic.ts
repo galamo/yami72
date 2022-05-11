@@ -9,10 +9,10 @@ async function isUserExist(userName) {
       JOIN
   employees_credentials ON employees.id = employees_credentials.employee_id
     WHERE
-  email_address = '${userName}' order by employees_credentials.created_at DESC limit 1
+  email_address = ? order by employees_credentials.created_at DESC limit 1
   `;
   console.log(query);
-  const [result] = await getConnection().query(query);
+  const [result] = await getConnection().execute(query, [userName]);
   return result[0];
 }
 
