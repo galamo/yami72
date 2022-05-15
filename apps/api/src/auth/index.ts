@@ -13,6 +13,7 @@ const {
 import jwt from "jsonwebtoken";
 import { users } from "../data";
 import verifyToken from "../middleware/auth";
+import { signToken } from "./helper";
 // const { changeUserPassword } = require("./controller")
 
 router.post("/login", loginHandler);
@@ -42,19 +43,7 @@ async function loginHandler(req, res, next) {
     return res.status(401).send("User not Authorized - Go to Hell!");
   // const { ONLY THE KEYS I WANT!!! } = currentUser
   const { first_name, last_name, email_address } = currentUser;
-  const token = jwt.sign(
-    {
-      data: {
-        first_name,
-        last_name,
-        email_address,
-        password: null,
-        role: "viewer",
-      },
-    },
-    process.env.SECRET,
-    { expiresIn: "10h" }
-  );
+  const token = signToken({ first_name, last_name, email_address });
   return res.json({ userName, message: `Success`, token });
 }
 
