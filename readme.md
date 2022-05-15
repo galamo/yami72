@@ -60,8 +60,15 @@
 - Backend Query + Api entry
 - IF there is error in the response - present the relevant modal
 
-
-
 # Test
+
 - npm install -g mocha
 - npm install chai
+
+# Homework 15-05
+
+1. Create integration test for login process
+
+- user not exist
+- user unauzthorized
+- user login successfully
