@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import authRouter from "./auth";
 import ordersRouter from "./orders";
+import productsRouter from "./products";
 import bodyParser from "body-parser";
 import verifyToken from "./middleware/auth";
 import cors from "cors";
@@ -19,6 +20,7 @@ app.get("/healthcheck", async (req, res) => {
 app.use("/auth", authRouter);
 app.use(verifyToken);
 app.use("/orders", ordersRouter);
+app.use("/products", productsRouter);
 
 app.use((error, req, res, next) => {
   console.log(error);

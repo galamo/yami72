@@ -8,19 +8,23 @@
     "build-watch": "npx tsc --watch",
     "start-dev": "nodemon ./dist/index.js",
     "all": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api,Client\" -c \"blue,red,yellow\"  \"npm run build-watch\" \"npm run start-dev\" \"cd .. ;cd yami-client; npm start\"",
-    "all-slim": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api\" -c \"blue,red\"  \"npm run build-watch\" \"npm run start-dev\""
+    "all-slim": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api\" -c \"blue,red\"  \"npm run build-watch\" \"npm run start-dev\"",
+    "test": "mocha --recursive"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "body-parser": "^1.19.2",
+    "chai": "^4.3.6",
     "concurrently": "^7.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^10.0.0",
     "mysql2": "^2.3.3",
     "typescript": "^4.6.3"
   },

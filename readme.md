@@ -59,3 +59,9 @@
 - UI - Table
 - Backend Query + Api entry
 - IF there is error in the response - present the relevant modal
+
+
+
+# Test
+- npm install -g mocha
+- npm install chai
