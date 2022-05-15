@@ -7,7 +7,7 @@ router.get("/", getProductsHandler);
 
 async function getProductsHandler(req, res, next) {
   const results = await getProducts(req.query.category);
-  res.json({ message: "ok", data: results });
+  res.json({ message: "ok", products: results });
 }
 
 export default router;

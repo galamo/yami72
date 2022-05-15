@@ -8,7 +8,7 @@
     "build-watch": "npx tsc --watch",
     "start-dev": "nodemon ./dist/index.js",
     "all-slim": "concurrently -k -p \"[{name}]\" -n \"TS-Compile-Api,Api\" -c \"blue,red\"  \"npm run build-watch\" \"npm run start-dev\"",
-    "test": "mocha --recursive"
+    "test": "mocha ./test/ --recursive --exit"
   },
   "keywords": [],
   "author": "",

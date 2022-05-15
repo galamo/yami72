@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { isPasswordMatch } = require("../dist/auth/validations");
 const axios = require("axios");
 const { signToken } = require("../dist/auth/helper");
-
+const insertTwoProducts = require("./helpers");
 const productsUrl = "http://localhost:3500/products";
 
 const token = signToken({
@@ -11,14 +11,24 @@ const token = signToken({
   email_address: "userText@gmail.com",
 });
 
+// create products
+// insert them to DB
+// fetch the products
+// asert the products
+
 describe("/Get Products", () => {
   it("Fetch All products", async () => {
-    const { data } = await axios.get(productsUrl, {
+    const category = `cat_${Math.ceil(Math.random() * 99999)}`;
+    const result = await insertTwoProducts(category);
+    const { data } = await axios.get(`${productsUrl}?category=${category}`, {
       headers: {
         authorization: token,
       },
     });
-    const { message } = data;
+    const { message, products } = data;
+    expect(products.length).to.be.equal(result.length);
+    expect(result[0].category).to.be.equal(category);
+    expect(result[0].product_name).to.be.equal(result[0].product_name);
     expect(message).to.be.equal("ok");
   });
   it("Fetch All products - Unauthorized", async () => {
@@ -52,15 +62,5 @@ describe("Is password match", () => {
   it("Check if password is not match - notMatch", () => {
     const result = isPasswordMatch({ passwor: "password1234" }, "notMatch");
     expect(result).to.be.false;
-  });
-});
-
-describe("get products query", () => {
-  it("category exist", () => {
-
-  });
-
-  it("category not exist", () => {
-      
   });
 });
