@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { isPasswordMatch } = require("../dist/auth/validations");
 const axios = require("axios");
 const { signToken } = require("../dist/auth/helper");
-const insertTwoProducts = require("./helpers");
+const { insertTwoProducts } = require("./helpers");
 const productsUrl = "http://localhost:3500/products";
 
 const token = signToken({

@@ -49,3 +49,6 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-05-11 17:53:17
+
+
+INSERT INTO `northwind`.`employees_credentials` (`employee_id`, `password`) VALUES ('1', '1234');

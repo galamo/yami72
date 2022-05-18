@@ -36,6 +36,7 @@ function logoutHandler(req, res) {
 
 async function loginHandler(req, res, next) {
   const { userName, password } = req.body;
+  console.log(userName, "userName");
   const currentUser = await isUserExist(userName);
   if (!currentUser) return res.status(404).send("User not found");
   console.log(currentUser);

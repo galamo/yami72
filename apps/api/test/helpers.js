@@ -43,4 +43,41 @@ async function insertTwoProducts(category) {
   return products;
 }
 
-module.exports = insertTwoProducts;
+async function insertFakeUser({
+  company,
+  last_name,
+  first_name,
+  email_address,
+  job_title,
+}) {
+  connection = await mysql2.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "example",
+    database: "northwind",
+  });
+
+  const result = await connection.execute(
+    `INSERT INTO northwind.employees (company, last_name, first_name, email_address, job_title) VALUES (?,?,?,?,?)`,
+    [company, last_name, first_name, email_address, job_title]
+  );
+  return result[0];
+}
+
+async function insertFakePassword({ userId, password }) {
+  connection = await mysql2.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "example",
+    database: "northwind",
+  });
+  const result = await connection.execute(
+    `INSERT INTO northwind.employees_credentials (employee_id, password) VALUES (?,?);`,
+    [userId, password]
+  );
+  return result[0];
+}
+
+module.exports = { insertTwoProducts, insertFakeUser, insertFakePassword };
