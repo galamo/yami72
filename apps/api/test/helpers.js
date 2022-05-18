@@ -1,4 +1,16 @@
 const mysql2 = require("mysql2/promise");
+require("dotenv").config();
+
+
+
+
+const {
+  MYSQL_DB_HOST: host,
+  MYSQL_DB_PORT: port,
+  MYSQL_DB_USER: user,
+  MYSQL_DB_PASS: dbpassword,
+  MYSQL_DB_SCHEMA: database,
+} = process.env;
 
 function createProduct(category) {
   return {
@@ -10,19 +22,13 @@ function createProduct(category) {
 }
 
 async function insertTwoProducts(category) {
-  //     MYSQL_DB_HOST=localhost
-  // MYSQL_DB_PORT=3306
-  // MYSQL_DB_USER=root
-  // MYSQL_DB_PASS=example
-  // MYSQL_DB_SCHEMA=northwind
-
   let products = [];
   connection = await mysql2.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "example",
-    database: "northwind",
+    host,
+    port,
+    user,
+    password: dbpassword,
+    database,
   });
 
   for (let index = 0; index < 2; index++) {
@@ -51,11 +57,11 @@ async function insertFakeUser({
   job_title,
 }) {
   connection = await mysql2.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "example",
-    database: "northwind",
+    host,
+    port,
+    user,
+    password: dbpassword,
+    database,
   });
 
   const result = await connection.execute(
@@ -67,11 +73,11 @@ async function insertFakeUser({
 
 async function insertFakePassword({ userId, password }) {
   connection = await mysql2.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "example",
-    database: "northwind",
+    host,
+    port,
+    user,
+    password: dbpassword,
+    database,
   });
   const result = await connection.execute(
     `INSERT INTO northwind.employees_credentials (employee_id, password) VALUES (?,?);`,

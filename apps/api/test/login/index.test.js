@@ -42,9 +42,12 @@ describe("/POST Login", () => {
       userName: generatedUser.email_address,
       password: "CorrectPassword",
     });
-    //  Implement 2 expect
-    // 1 for status response
-    // 2 for the actual response ( jwt )
+    const { token, message } = response.data;
+    expect(response.status).to.be.equal(200);
+    expect(message).to.be.equal("Success");
+    const isString = typeof token === "string";
+    expect(token).is.not.null;
+    expect(isString).to.be.true;
   });
 });
 
