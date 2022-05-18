@@ -72,3 +72,11 @@
 - user not exist
 - user unauzthorized
 - user login successfully
+
+# Homework 18-05-2022
+
+1. Support deleting Test data after the test succeeded ( before / after )
+2. Support filter products
+   - based on select option - which actually fetch all the filters from the database
+   - based on free text - which actually fetch according the fitler text ( debounce )
+   - toggle between the filters

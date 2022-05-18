@@ -19,6 +19,7 @@ import { ACTIONS } from "./store/actions";
 import AppModal from "./components/pages/appModal";
 import { OrdersPage } from "./components/pages/orders";
 import { ChangePasswordPage } from "./components/pages/changePassword";
+import { ProductsPage } from "./components/pages/products";
 
 interface IRoute {
   path: string;
@@ -75,6 +76,12 @@ const routes: Array<IRoute> = [
     path: "/change-password",
     element: <ChangePasswordPage />,
     linkText: "Change password",
+    invisible: false,
+  },
+  {
+    path: "/products",
+    element: <ProductsPage />,
+    linkText: "Products",
     invisible: false,
   },
   { path: "*", element: <NotFound />, linkText: "", invisible: true },
