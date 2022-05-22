@@ -85,3 +85,8 @@
 # Class Ex
 1. Implement Delete Product query in the API.
 2. Implement Delete functionality from the client
+
+
+# Homework
+1. Create Order - Restuarant 
+2. Add Product to Cart 
