@@ -8,4 +8,8 @@ WHERE
 `;
 };
 
-export { getProductsQuery };
+const getCategoriesQuery = (): string => {
+  return `SELECT distinct(category) FROM northwind.products`;
+};
+
+export { getProductsQuery, getCategoriesQuery };

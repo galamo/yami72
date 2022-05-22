@@ -7,7 +7,7 @@ export function WithLoading(props: {
 }) {
   return props.isLoading ? (
     <Spinner
-      style={{ marginLeft: "50%", color: "white" }}
+      style={{ marginLeft: "50%", color: "black" }}
       animation="grow"
       role="status"
     ></Spinner>

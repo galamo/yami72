@@ -53,6 +53,7 @@ export default function BasicTable(props: { data: Array<IProductClient> }) {
   const { data } = props;
   const [firstItem] = data;
   const cells = getCells(firstItem);
+  console.log(data, "data");
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -62,7 +63,7 @@ export default function BasicTable(props: { data: Array<IProductClient> }) {
         <TableBody>
           {data.map((row: IProductClient) => (
             <TableRow
-              key={row.productCode}
+              key={`${row.id}`}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">

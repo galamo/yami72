@@ -80,3 +80,8 @@
    - based on select option - which actually fetch all the filters from the database
    - based on free text - which actually fetch according the fitler text ( debounce )
    - toggle between the filters
+
+
+# Class Ex
+1. Implement Delete Product query in the API.
+2. Implement Delete functionality from the client
