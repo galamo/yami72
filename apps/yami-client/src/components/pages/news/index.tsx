@@ -50,7 +50,6 @@ export function NewsPage() {
             }
         }
         if (country) {
-            console.log("country: ", country)
             getTopHeadlines()
         }
     }, [country])
@@ -86,7 +85,6 @@ export function NewsPage() {
         }
     }
     const currentLanguate = "en"
-    console.log(isLoading, "isLoading")
     const showSearchHeader = !!search.length || !!country
     return <div className="container">
         <div className="row">

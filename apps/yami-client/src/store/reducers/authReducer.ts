@@ -21,7 +21,6 @@ export const authReducer = (
     }
 
     case ACTIONS.CHANGE_PASSWORD.CLEAR: {
-      console.log("ACTIONS.CHANGE_PASSWORD.CLEAR");
       clearTokenLS(state.token);
       return { ...state, token: null };
     }

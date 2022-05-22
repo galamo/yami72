@@ -1,9 +1,6 @@
 const mysql2 = require("mysql2/promise");
 require("dotenv").config();
 
-
-
-
 const {
   MYSQL_DB_HOST: host,
   MYSQL_DB_PORT: port,
@@ -33,7 +30,7 @@ async function insertTwoProducts(category) {
 
   for (let index = 0; index < 2; index++) {
     const product = createProduct(category);
-    products.push(product);
+
     const result = await connection.execute(
       `INSERT INTO northwind.products
           (supplier_ids, product_code, product_name, category) VALUES 
@@ -45,7 +42,9 @@ async function insertTwoProducts(category) {
         product.category,
       ]
     );
+    products.push({ ...product, id: result[0].insertId });
   }
+
   return products;
 }
 

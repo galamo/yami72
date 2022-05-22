@@ -10,7 +10,6 @@ export const productsReducer = (
 ) => {
   switch (action.type) {
     case ACTIONS.PRODUCTS.GET_PRODUCTS_SUCCESS: {
-      console.log("Inside ACTIONS.PRODUCTS.GET_PRODUCTS_SUCCESS");
       return { ...state, products: [...action.payload] };
     }
     default:

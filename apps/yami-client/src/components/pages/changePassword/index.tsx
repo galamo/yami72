@@ -24,20 +24,13 @@ export function ChangePasswordPage() {
         newPasswordConfirm,
         token,
       });
-      console.log(result);
       if (result === "ok") {
-        console.log("should redirect to login");
         dispatch({ type: ACTIONS.CHANGE_PASSWORD.CLEAR });
         navigate("/login");
       }
     } catch (ex) {}
   }
 
-  //   console.log(isRedirectToLogin);
-  //   if (isRedirectToLogin) {
-  //     console.log("should redirect");
-  //     return <Navigate to="/login" />;
-  //   }
   return (
     <div className="login-form">
       <div className="form-body">

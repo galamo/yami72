@@ -120,7 +120,6 @@ const reducer = (
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const reduxState: any = useSelector((state: any) => state.settingsReducers);
-  console.log(state, "global state!!!");
   return (
     <GlobalState.Provider
       value={{

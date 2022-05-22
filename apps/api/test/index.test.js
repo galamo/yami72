@@ -16,6 +16,34 @@ const token = signToken({
 // fetch the products
 // asert the products
 
+describe("/Delete Product", () => {
+  it("Delete the inserted Product", async () => {
+    const category = `cat_${Math.ceil(Math.random() * 99999)}`;
+    const result = await insertTwoProducts(category);
+    console.log(result);
+    const { data: firstResult } = await axios.delete(
+      `${productsUrl}/${result[0].id}`,
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    const { data: secondResult } = await axios.delete(
+      `${productsUrl}/${result[1].id}`,
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    const { message: firstMessage } = firstResult;
+    const { message: secondMessage } = secondResult;
+    expect(firstMessage).to.be.equal("ok");
+    expect(secondMessage).to.be.equal("ok");
+  });
+});
+
 describe("/Get Products", () => {
   it("Fetch All products", async () => {
     const category = `cat_${Math.ceil(Math.random() * 99999)}`;

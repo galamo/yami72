@@ -6,6 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+
 import { IProductClient } from "../../../../store/services/productsService";
 
 function createData(
@@ -37,23 +39,33 @@ const tableColumns = {
 function getCells(item: any) {
   if (typeof item !== "object") return;
   const keys = Object.keys(item);
-  return keys.map((key: string, index: number) => {
+  const columns = keys.map((key: string, index: number) => {
     // @ts-ignore
     const label: string = (tableColumns[key] as any)?.label;
-    console.log(label);
     return (
       <TableCell key={key} align={"left"}>
         {label}
       </TableCell>
     );
   });
+  const getACtionsCell = () => {
+    return (
+      <TableCell key={"Actions"} align={"left"}>
+        Actions
+      </TableCell>
+    );
+  };
+  columns.push(getACtionsCell());
+  return columns;
 }
 
-export default function BasicTable(props: { data: Array<IProductClient> }) {
+export default function BasicTable(props: {
+  data: Array<IProductClient>;
+  deleteAction: Function;
+}) {
   const { data } = props;
   const [firstItem] = data;
   const cells = getCells(firstItem);
-  console.log(data, "data");
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -73,6 +85,17 @@ export default function BasicTable(props: { data: Array<IProductClient> }) {
               <TableCell align="left">{row.id}</TableCell>
               <TableCell align="left">{row.productCost}</TableCell>
               <TableCell align="left">{row.category}</TableCell>
+              <TableCell align="left">
+                <Button
+                  onClick={() => {
+                    props.deleteAction(row.id);
+                  }}
+                  variant="outlined"
+                  color="error"
+                >
+                  Delete
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -39,19 +39,16 @@ export function ParentSolution() {
 }
 
 function ChildA() {
-    console.log("render me")
     return <div>
         <GrandChildOfA />
     </div>
 }
 
 function GrandChildOfA() {
-    console.log("render me")
     return <div><Grand2ChildOfA /></div>
 }
 
 function Grand2ChildOfA() {
-    console.log("render me")
     const context: IContext = useContext(DataContext)
     const dispatcher = context?.dispatch as Function
     return <div>

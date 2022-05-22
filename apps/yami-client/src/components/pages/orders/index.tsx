@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux"
 export function OrdersPage() {
     const orders = useSelector((state: any) => state.ordersReducer?.orders)
     const dispatch = useDispatch()
-    console.log(orders)
     useEffect(() => {
         getOrdersAction()
     }, [])

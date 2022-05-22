@@ -30,7 +30,6 @@ export const settingsReducers = (state: any = initialState, action: { type: stri
             return { ...state, currentCountry: { ...state.currentCountry, currentCountry: action.payload } }
         }
         case ACTIONS.CURRENT_COUNTRY.GET_CURRENT_COUNTRY_ERROR: {
-            console.log(action.payload)
             const { message } = action.payload
             return {
                 ...state, currentCountry: {

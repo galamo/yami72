@@ -12,4 +12,8 @@ const getCategoriesQuery = (): string => {
   return `SELECT distinct(category) FROM northwind.products`;
 };
 
-export { getProductsQuery, getCategoriesQuery };
+const deleteProductByIdQuery = (): string => {
+  return `DELETE FROM northwind.products WHERE (id = ?);`;
+};
+
+export { getProductsQuery, getCategoriesQuery, deleteProductByIdQuery };

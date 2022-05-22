@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 export function HomePage() {
     useEffect(() => {
         return () => {
-            console.log("component HomePage unmount!!!")
         }
     }, [])
 

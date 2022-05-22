@@ -9,7 +9,6 @@ export function useAxios(hookState: { url: string, payload?: any }) {
             try {
                 const result = await axios.get(hookState.url)
                 const { data } = result
-                console.log(data)
                 setData(hookState?.payload.isArray ? data[0] : data[hookState?.payload?.key])
             } catch (error) {
                 // Error Liad - 100%
