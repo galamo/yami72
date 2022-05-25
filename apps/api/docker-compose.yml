@@ -1,6 +1,10 @@
 version: "3.1"
 
 services:
+  api3:
+    image: api3
+    ports:
+      - 3500:3500
   db:
     ports:
       - 3306:3306
