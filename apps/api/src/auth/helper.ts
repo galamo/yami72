@@ -3,6 +3,7 @@ export function signToken(obj: {
   first_name: string;
   last_name: string;
   email_address: string;
+  employee_id: number;
 }) {
   const token = jwt.sign(
     {

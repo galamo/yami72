@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import authRouter from "./auth";
 import ordersRouter from "./orders";
+import cartRouter from "./carts";
 import productsRouter from "./products";
 import bodyParser from "body-parser";
 import verifyToken from "./middleware/auth";
@@ -21,6 +22,7 @@ app.use("/auth", authRouter);
 app.use(verifyToken);
 app.use("/orders", ordersRouter);
 app.use("/products", productsRouter);
+app.use("/carts", cartRouter);
 
 app.use((error, req, res, next) => {
   console.log(error);

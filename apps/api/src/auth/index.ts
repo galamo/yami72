@@ -43,8 +43,13 @@ async function loginHandler(req, res, next) {
   if (!isPasswordMatch(currentUser, password))
     return res.status(401).send("User not Authorized - Go to Hell!");
   // const { ONLY THE KEYS I WANT!!! } = currentUser
-  const { first_name, last_name, email_address } = currentUser;
-  const token = signToken({ first_name, last_name, email_address });
+  const { first_name, last_name, email_address, employee_id } = currentUser;
+  const token = signToken({
+    first_name,
+    last_name,
+    email_address,
+    employee_id,
+  });
   return res.json({ userName, message: `Success`, token });
 }
 

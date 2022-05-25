@@ -10,24 +10,6 @@ import Button from "@mui/material/Button";
 
 import { IProductClient } from "../../../../store/services/productsService";
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
-
 const tableColumns = {
   productName: { label: "Name", order: 2 },
   productCost: { label: "Cost", order: 3 },
@@ -62,6 +44,7 @@ function getCells(item: any) {
 export default function BasicTable(props: {
   data: Array<IProductClient>;
   deleteAction: Function;
+  addToCartAction: Function;
 }) {
   const { data } = props;
   const [firstItem] = data;
@@ -94,6 +77,14 @@ export default function BasicTable(props: {
                   color="error"
                 >
                   Delete
+                </Button>
+                <Button
+                  onClick={() => {
+                    props.addToCartAction(row.id);
+                  }}
+                  variant="outlined"
+                >
+                  Add To Cart
                 </Button>
               </TableCell>
             </TableRow>

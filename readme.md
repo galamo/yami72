@@ -90,3 +90,8 @@
 # Homework
 1. Create Order - Restuarant 
 2. Add Product to Cart 
+
+
+# Homework 
+1. Create Cart page - show all the products from the current user cart
+2. implement checkout functionality which will calculate the cart sum + close the cart

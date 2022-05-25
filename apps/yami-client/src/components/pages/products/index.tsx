@@ -9,26 +9,32 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Switch from "@mui/material/Switch";
 import debounce from "lodash/debounce";
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import { getProductsAction } from "../../../store/asyncFunctions/products";
 import axiosInstance from "../../../store/services/index.axios";
 import { WithLoading } from "../../ui-components/with-loading";
+import { getCartDetailsAction } from "../../../store/asyncFunctions/cart";
+const MySwal = withReactContent(Swal);
 
 export function ProductsPage() {
   const selectCategoryItem = {
     category: "Select Category",
   };
-  const dispatch = useDispatch();
   const [categories, setCtegories] = useState([]);
   const initialCategoryType: { category: string | null } = { category: null };
   const [selectedCategory, setSelectedCategory] = useState(initialCategoryType);
   const [isFreeTextSearch, setIsFreeTextSearch] = useState(true);
   const products = useSelector((state: any) => state.productsReducer.products);
+  const currentCart = useSelector(
+    (state: any) => state.cartReducers.currentCart
+  );
 
   useEffect(() => {
     getCategories();
+    getCartDetailsAction();
   }, []);
 
   useEffect(() => {
@@ -49,6 +55,26 @@ export function ProductsPage() {
       // TODO: delete success popup
       getProductsAction(selectedCategory.category as string);
     } catch (ex) {
+      // TODO: delete failure popup
+    }
+  }
+
+  async function addToCartHandler(productId: number) {
+    try {
+      const result = await axiosInstance.post(`/carts/product`, {
+        cartId: currentCart.id,
+        productId,
+      });
+
+      await MySwal.fire({
+        title: <strong>Product added!</strong>,
+        icon: "success",
+      });
+    } catch (ex) {
+      await MySwal.fire({
+        title: <strong>Please try again!</strong>,
+        icon: "error",
+      });
       // TODO: delete failure popup
     }
   }
@@ -112,6 +138,7 @@ export function ProductsPage() {
       <div>
         <BasicTable
           data={products}
+          addToCartAction={addToCartHandler}
           deleteAction={(id: number) => {
             deleteProductHandler(id);
           }}

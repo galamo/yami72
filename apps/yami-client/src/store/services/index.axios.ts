@@ -15,6 +15,7 @@ axiosInstance.interceptors.response.use(
   },
   (error: AxiosError) => {
     openModalError();
+    return Promise.reject(error);
   }
 );
 
